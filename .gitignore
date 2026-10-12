@@ -6,6 +6,7 @@
 # Dependencies
 node_modules/
 .venv/
+.venv_backup/
 env/
 venv/
 
