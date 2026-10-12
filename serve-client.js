@@ -25,7 +25,12 @@ const server = http.createServer((req, res) => {
   let pathname = parsedUrl.pathname;
   if (pathname === "/" || pathname === "/login") pathname = "/index.html";
 
-  const filePath = path.join(__dirname, pathname.replace(/^\//, ""));
+  // Serve static assets from frontend/ directory with fallback to root
+  const clientDir = fs.existsSync(path.join(__dirname, "frontend", "index.html"))
+    ? path.join(__dirname, "frontend")
+    : __dirname;
+
+  const filePath = path.join(clientDir, pathname.replace(/^\//, ""));
 
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath).toLowerCase();

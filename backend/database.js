@@ -29,25 +29,48 @@ function normalizeUser(row) {
 }
 
 async function initDatabase(config = {}) {
-  const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT } = config;
+  const rawDbUrl = (config.DATABASE_URL || process.env.DATABASE_URL || "").trim();
+  const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, DB_SSL } = config;
 
-  const host = DB_HOST || "localhost";
-  const port = parseInt(DB_PORT || "5432", 10);
-  const user = DB_USER || "storytelling_app";
-  const password = DB_PASSWORD || "storytelling_pass_2026";
-  const database = DB_NAME || "storytelling_db";
+  let poolConfig = {
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000
+  };
+
+  if (rawDbUrl && !rawDbUrl.includes("YOUR_SUPABASE_PASSWORD")) {
+    // Normalize if connection string contains psycopg driver prefix
+    let connectionString = rawDbUrl
+      .replace("postgresql+psycopg://", "postgresql://")
+      .replace("postgres+psycopg://", "postgres://");
+
+    // Remove sslmode from query string so pg's explicit ssl options take precedence
+    connectionString = connectionString.replace(/[?&]sslmode=[^&]+/g, "").replace(/\?$/, "");
+
+    poolConfig.connectionString = connectionString;
+    // Enable SSL for Supabase Cloud PostgreSQL
+    poolConfig.ssl = { rejectUnauthorized: false };
+  } else {
+    const host = DB_HOST || process.env.DB_HOST || "localhost";
+    const port = parseInt(DB_PORT || process.env.DB_PORT || "5432", 10);
+    const user = DB_USER || process.env.DB_USER || "postgres";
+    const password = DB_PASSWORD || process.env.DB_PASSWORD || "";
+    const database = DB_NAME || process.env.DB_NAME || "postgres";
+
+    poolConfig.host = host;
+    poolConfig.port = port;
+    poolConfig.user = user;
+    poolConfig.password = password;
+    poolConfig.database = database;
+
+    // Automatically enable SSL for remote hosts (e.g. Supabase)
+    if (DB_SSL === "true" || (host !== "localhost" && host !== "127.0.0.1")) {
+      poolConfig.ssl = { rejectUnauthorized: false };
+    }
+  }
 
   try {
-    pool = new Pool({
-      host,
-      port,
-      user,
-      password,
-      database,
-      max: 10,
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 5000
-    });
+    pool = new Pool(poolConfig);
 
     const client = await pool.connect();
     const res = await client.query("SELECT current_database(), current_user, version();");

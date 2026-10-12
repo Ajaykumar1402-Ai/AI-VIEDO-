@@ -11,7 +11,7 @@ from alembic import context
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.database import Base
-from app.models import User
+from app.models import User, Project, Story, Scene, GenerationJob
 from app.config import settings
 
 # this is the Alembic Config object, which provides
@@ -19,7 +19,8 @@ from app.config import settings
 config = context.config
 
 # Dynamically set sqlalchemy.url from settings / .env
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+if settings.DATABASE_URL:
+    config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 
 # Interpret the config file for Python logging.
 if config.config_file_name is not None:

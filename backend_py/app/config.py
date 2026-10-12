@@ -1,12 +1,29 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import Field, field_validator
 import os
 
 class Settings(BaseSettings):
     DATABASE_URL: str = Field(
-        default="postgresql+psycopg://storytelling_app:storytelling_pass_2026@localhost:5432/storytelling_db",
-        description="SQLAlchemy PostgreSQL Connection URL"
+        default="",
+        description="SQLAlchemy PostgreSQL Connection URL (Supabase)"
     )
+
+    @field_validator("DATABASE_URL", mode="after")
+    @classmethod
+    def normalize_database_url(cls, v: str) -> str:
+        """
+        Normalize database URLs to use the psycopg 3 driver dialect.
+        Supabase URLs often begin with postgresql:// or postgres://.
+        SQLAlchemy requires postgresql+psycopg:// since only psycopg v3 is installed.
+        """
+        if not v:
+            return v
+        v = v.strip()
+        if v.startswith("postgres://"):
+            return "postgresql+psycopg://" + v[len("postgres://"):]
+        if v.startswith("postgresql://") and not v.startswith("postgresql+"):
+            return "postgresql+psycopg://" + v[len("postgresql://"):]
+        return v
     FRONTEND_ORIGIN: str = Field(
         default="http://localhost:3000",
         description="Allowed frontend origin for CORS"

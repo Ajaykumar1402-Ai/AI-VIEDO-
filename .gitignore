@@ -1,29 +1,38 @@
-# Dependencies & Environment
-node_modules/
-.venv/
-env/
-venv/
+# Environment variables & secrets
 .env
 .env.*
 !.env.example
 
-# Python
+# Dependencies
+node_modules/
+.venv/
+env/
+venv/
+
+# Python bytecode & cache
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 .pytest_cache/
+
+# Local databases & test artifacts
 *.db
+*.sqlite
 *.sqlite3
+test_*.wav
 
-# Audio / Video Outputs & Artifacts
-outputs/
-*.log
-*.wav
-*.mp3
-*.mp4
+# Backups & temp files
+*.bak
+*.tmp
+*.swp
+*.swo
 
-# OS / System
+# OS artifacts
 .DS_Store
 Thumbs.db
 __MACOSX/
+
+# Application outputs & logs
+*.log
+backend_py/outputs/*
+!backend_py/outputs/.gitkeep

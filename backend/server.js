@@ -45,11 +45,13 @@ const GITHUB_CALLBACK_URL = process.env.GITHUB_CALLBACK_URL || envVars.GITHUB_CA
 
 // Initialize Database Connection
 db.initDatabase({
+  DATABASE_URL: process.env.DATABASE_URL || envVars.DATABASE_URL,
   DB_HOST: process.env.DB_HOST || envVars.DB_HOST,
   DB_PORT: process.env.DB_PORT || envVars.DB_PORT,
   DB_USER: process.env.DB_USER || envVars.DB_USER,
   DB_PASSWORD: process.env.DB_PASSWORD || envVars.DB_PASSWORD,
-  DB_NAME: process.env.DB_NAME || envVars.DB_NAME
+  DB_NAME: process.env.DB_NAME || envVars.DB_NAME,
+  DB_SSL: process.env.DB_SSL || envVars.DB_SSL
 });
 
 // ===================================================================

@@ -8,14 +8,50 @@ const { Pool } = require("pg");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "sivacine_storytelling_super_secret_jwt_key_2026";
-const pgPool = new Pool({
-  host: "localhost",
-  port: 5432,
-  user: "storytelling_app",
-  password: "storytelling_pass_2026",
-  database: "storytelling_db"
-});
+const fs = require("fs");
+const path = require("path");
+
+const envFilePath = path.join(__dirname, ".env");
+const envVars = {};
+if (fs.existsSync(envFilePath)) {
+  fs.readFileSync(envFilePath, "utf-8").split("\n").forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith("#")) {
+      const [k, ...v] = trimmed.split("=");
+      if (k) envVars[k.trim()] = v.join("=").trim();
+    }
+  });
+}
+
+const JWT_SECRET = process.env.JWT_SECRET || envVars.JWT_SECRET || "sivacine_storytelling_super_secret_jwt_key_2026";
+const rawDbUrl = (process.env.DATABASE_URL || envVars.DATABASE_URL || "").trim();
+
+let poolConfig = {
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 10000
+};
+
+if (rawDbUrl && !rawDbUrl.includes("YOUR_SUPABASE_PASSWORD")) {
+  let connectionString = rawDbUrl
+    .replace("postgresql+psycopg://", "postgresql://")
+    .replace("postgres+psycopg://", "postgres://");
+  connectionString = connectionString.replace(/[?&]sslmode=[^&]+/g, "").replace(/\?$/, "");
+  poolConfig.connectionString = connectionString;
+  poolConfig.ssl = { rejectUnauthorized: false };
+} else {
+  const host = process.env.DB_HOST || envVars.DB_HOST || "localhost";
+  poolConfig.host = host;
+  poolConfig.port = parseInt(process.env.DB_PORT || envVars.DB_PORT || "5432", 10);
+  poolConfig.user = process.env.DB_USER || envVars.DB_USER || "postgres";
+  poolConfig.password = process.env.DB_PASSWORD || envVars.DB_PASSWORD || "";
+  poolConfig.database = process.env.DB_NAME || envVars.DB_NAME || "postgres";
+  if (host !== "localhost" && host !== "127.0.0.1") {
+    poolConfig.ssl = { rejectUnauthorized: false };
+  }
+}
+
+const pgPool = new Pool(poolConfig);
 
 function makeRequest(url, options = {}) {
   return new Promise((resolve, reject) => {
@@ -115,11 +151,13 @@ async function runTests() {
     console.log("[TEST 5] Testing Google User Creation & PostgreSQL Persistence...");
     const db = require("./database");
     await db.initDatabase({
-      DB_HOST: "localhost",
-      DB_PORT: 5432,
-      DB_USER: "storytelling_app",
-      DB_PASSWORD: "storytelling_pass_2026",
-      DB_NAME: "storytelling_db"
+      DATABASE_URL: process.env.DATABASE_URL || envVars.DATABASE_URL,
+      DB_HOST: process.env.DB_HOST || envVars.DB_HOST,
+      DB_PORT: process.env.DB_PORT || envVars.DB_PORT,
+      DB_USER: process.env.DB_USER || envVars.DB_USER,
+      DB_PASSWORD: process.env.DB_PASSWORD || envVars.DB_PASSWORD,
+      DB_NAME: process.env.DB_NAME || envVars.DB_NAME,
+      DB_SSL: process.env.DB_SSL || envVars.DB_SSL
     });
 
     const mockGoogleId = `google_sub_${crypto.randomBytes(6).toString("hex")}`;
