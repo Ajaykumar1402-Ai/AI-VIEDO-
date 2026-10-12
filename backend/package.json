@@ -1,0 +1,30 @@
+{
+  "name": "sivacine-ai-backend",
+  "version": "1.0.0",
+  "description": "OAuth 2.0 Backend Authentication Server for SIVACINE AI (Google & GitHub)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "oauth2",
+    "google-auth",
+    "github-auth",
+    "express",
+    "jwt",
+    "authentication"
+  ],
+  "author": "sivakrishna s",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.24.5",
+    "pg": "^8.23.1"
+  }
+}

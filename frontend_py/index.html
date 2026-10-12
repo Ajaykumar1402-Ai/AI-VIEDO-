@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SIVA CINE AI &bull; Turn Your Ideas Into AI Videos</title>
+  <meta name="description" content="Create cinematic videos, stories, animations and AI-generated characters from simple prompts with next-generation AI foundation models.">
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sivacine-app">
+
+  <!-- ==============================================================
+       UNIQUE SPARK CURSOR CANVAS OVERLAY
+       ============================================================== -->
+  <canvas id="sparkCursorCanvas" class="spark-cursor-canvas"></canvas>
+
+  <!-- ==============================================================
+       1. TOP NAVIGATION
+       ============================================================== -->
+  <header class="top-nav-header" id="topNav">
+    <div class="nav-container">
+      
+      <!-- Logo & Product Name -->
+      <a href="#hero" class="nav-brand" id="brandLogo">
+        <div class="brand-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" class="brand-aperture-svg">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" stroke-opacity="0.3"/>
+            <path d="M12 3L16.5 12M16.5 12L12 21M16.5 12L7.5 12M7.5 12L12 3M7.5 12L12 21" stroke="url(#brandGlowGrad)" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="brandGlowGrad" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8B5CF6"/>
+                <stop offset="0.5" stop-color="#EC4899"/>
+                <stop offset="1" stop-color="#3B82F6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-name-group">
+          <span class="brand-title">SIVACINE <span class="brand-badge-ai">AI</span></span>
+          <span class="brand-subtitle">STUDIO ENGINE</span>
+        </div>
+      </a>
+
+      <!-- Center Links -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#explore" class="nav-link" id="navLinkExplore">Explore</a>
+        <a href="#create" class="nav-link" id="navLinkCreate">Create</a>
+        <a href="#templates" class="nav-link" id="navLinkTemplates">Templates</a>
+        <a href="#pricing" class="nav-link" id="navLinkPricing">Pricing</a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <!-- Free Generation Counter Badge -->
+        <div class="free-credits-pill" id="navCreditsPill" title="Free Generations Remaining">
+          <span class="spark-dot"></span>
+          <span class="credits-text"><strong id="navFreeRemaining">2</strong> / 2 Free</span>
+        </div>
+
+        <!-- Login Button -->
+        <button class="btn-nav-login" id="btnNavLogin" onclick="openLoginModal()">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" width="14" height="14">
+            <circle cx="8" cy="5" r="3" stroke-width="1.5"/>
+            <path d="M2.5 14c0-2.5 2.5-4 5.5-4s5.5 1.5 5.5 4" stroke-width="1.5"/>
+          </svg>
+          <span id="navLoginText">Login</span>
+        </button>
+
+        <!-- Primary CTA: "Create Video" -->
+        <a href="#create" class="btn-primary-create" id="btnNavCreate">
+          <span>Create Video</span>
+          <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12">
+            <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==============================================================
+       MAIN COMPACT PRODUCT CONTAINER
+       ============================================================== -->
+  <main class="main-content-flow">
+
+    <!-- ============================================================
+         2. HERO SECTION
+         ============================================================ -->
+    <section class="hero-section" id="hero">
+      <div class="hero-atmosphere-glow"></div>
+      
+      <div class="hero-grid-container">
+        
+        <!-- Left: Copy & Actions -->
+        <div class="hero-text-column">
+          
+          <div class="hero-meta-pill">
+            <span class="sparkle-icon">✦</span>
+            <span>NEXT-GEN AI CINEMA ENGINE &bull; 4K MASTER READY</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Turn Your Ideas <br>
+            <span class="gradient-text">Into AI Videos</span>
+          </h1>
+
+          <p class="hero-subline">
+            Create cinematic videos, stories, animations and AI-generated characters from simple prompts.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#create" class="btn-hero-primary" id="heroCtaCreate">
+              <span>Create Your Video</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" width="16" height="16">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            <a href="#explore" class="btn-hero-secondary" id="heroCtaExplore">
+              <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14">
+                <path d="M4 3l9 5-9 5V3z"/>
+              </svg>
+              <span>Explore Videos</span>
+            </a>
+          </div>
+
+          <!-- Quick Trust & Feature Badges -->
+          <div class="hero-features-strip">
+            <div class="h-feat-item">
+              <span class="feat-check">✓</span>
+              <span>2 Free Generations</span>
+            </div>
+            <div class="h-feat-item">
+              <span class="feat-check">✓</span>
+              <span>Avatar &amp; Story Sync</span>
+            </div>
+            <div class="h-feat-item">
+              <span class="feat-check">✓</span>
+              <span>Instant 4K Export</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: ONE Large Beautiful Video Preview (Muted Autoplay Loop) -->
+        <div class="hero-video-column">
+          <div class="hero-cinema-card" id="heroCinemaCard">
+            <div class="hero-video-wrapper">
+              <video 
+                id="heroMainVideo" 
+                class="hero-main-video" 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                preload="auto"
+                poster="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80"
+              >
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+              </video>
+
+              <!-- Interactive Cinematic AI Lens -->
+              <div class="cinematic-ai-lens" id="cinematicAiLens">
+                <div class="ai-lens-glass">
+                  <div class="ai-lens-scanner-line"></div>
+                  <div class="ai-lens-reticle"></div>
+                  <div class="ai-lens-corner tl"></div>
+                  <div class="ai-lens-corner tr"></div>
+                  <div class="ai-lens-corner bl"></div>
+                  <div class="ai-lens-corner br"></div>
+                </div>
+
+                <!-- Real-Time Dynamic Cinematic Metadata HUD -->
+                <div class="ai-lens-hud" id="aiLensHud">
+                  <div class="lens-hud-tag-row">
+                    <span class="lens-pulse-dot"></span>
+                    <span class="lens-hud-style" id="lensHudStyle">CINEMATIC</span>
+                  </div>
+                  <div class="lens-meta-line"><span>CAMERA:</span> <strong id="lensHudCamera">DOLLY IN</strong></div>
+                  <div class="lens-meta-line"><span>LIGHTING:</span> <strong id="lensHudLighting">NEON</strong></div>
+                  <div class="lens-meta-line"><span>MOOD:</span> <strong id="lensHudMood">FUTURISTIC</strong></div>
+                  <div class="lens-meta-line"><span>QUALITY:</span> <strong id="lensHudQuality">4K MASTER</strong></div>
+                </div>
+
+                <!-- Idle Scene Detection Floating Card (~1s hover) -->
+                <div class="ai-scene-detected-card" id="aiSceneDetectedCard">
+                  <div class="detected-badge">✨ AI SCENE DETECTED</div>
+                  <div class="detected-tags" id="detectedSceneTags">Cyberpunk &bull; Neon &bull; Cinematic</div>
+                  <button class="btn-generate-detected-style" id="btnGenDetectedStyle" onclick="handleGenerateDetectedStyle(event)">
+                    <span>Generate This Style &rarr;</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Video Glass HUD Overlay -->
+              <div class="hero-video-hud">
+                <div class="hero-hud-top">
+                  <div class="hud-live-tag">
+                    <span class="live-dot"></span>
+                    <span>AI GENERATED OUTPUT</span>
+                  </div>
+                  <div class="hud-badge-model">
+                    <span>Premium Cinema &bull; 4K</span>
+                  </div>
+                </div>
+
+                <!-- Floating Prompt Glass Badge -->
+                <div class="hero-floating-prompt">
+                  <div class="prompt-chip-icon">✨</div>
+                  <div class="prompt-chip-content">
+                    <span class="prompt-chip-label">PROMPT</span>
+                    <p class="prompt-chip-text">"A cinematic drone shot flying through a futuristic city at sunset, volumetric golden rays, 4k 24fps..."</p>
+                  </div>
+                  <button class="btn-prompt-remix" onclick="loadPromptToCreate('A cinematic drone shot flying through a futuristic city at sunset, volumetric golden rays, anamorphic lens 4k 24fps')">
+                    Try This
+                  </button>
+                </div>
+
+                <!-- Playback Mini Controls -->
+                <div class="hero-hud-bottom">
+                  <button class="hud-mute-toggle" id="heroMuteToggle" title="Toggle Sound">
+                    <span id="heroMuteIcon">🔇</span>
+                    <span id="heroMuteText">Muted</span>
+                  </button>
+                  <span class="hero-duration-tag">0:10 &bull; 60fps</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. EXPLORE SECTION — VERY IMPORTANT (REAL VIDEO CARDS)
+         ============================================================ -->
+    <section class="explore-section" id="explore">
+      <div class="section-container">
+        
+        <div class="section-header-compact">
+          <div class="header-left">
+            <span class="section-badge">COMMUNITY SHOWCASE</span>
+            <h2 class="section-title">Explore AI Videos</h2>
+            <p class="section-subtitle">Real generated videos created from simple prompts. Hover or tap to inspect.</p>
+          </div>
+          <div class="header-right">
+            <span class="video-counter-chip">
+              <span class="pulse-dot"></span>
+              <span>12 Playable Demos</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Categories Filter Row -->
+        <div class="explore-categories-row" id="exploreCategoriesBar">
+          <button class="cat-pill active" data-cat="all">All Disciplines</button>
+          <button class="cat-pill" data-cat="cinematic">Cinematic</button>
+          <button class="cat-pill" data-cat="story">Story</button>
+          <button class="cat-pill" data-cat="animation">Animation</button>
+          <button class="cat-pill" data-cat="avatar">Character / Avatar</button>
+          <button class="cat-pill" data-cat="product">Product / Advertisement</button>
+          <button class="cat-pill" data-cat="fantasy">Fantasy</button>
+          <button class="cat-pill" data-cat="social">Social Media</button>
+        </div>
+
+        <!-- Real Video Preview Grid -->
+        <div class="explore-video-grid" id="exploreVideoGrid">
+          <!-- Injected dynamically with HTML5 Video elements -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. & 5. CREATE SECTION & GENERATION EXPERIENCE
+         ============================================================ -->
+    <section class="create-section" id="create">
+      <div class="section-container">
+        
+        <div class="section-header-compact">
+          <div class="header-left">
+            <span class="section-badge">AI VIDEO STUDIO</span>
+            <h2 class="section-title">Create Your Video</h2>
+            <p class="section-subtitle">Enter your creative prompt and let our neural models generate cinematic motion.</p>
+          </div>
+          <div class="header-right">
+            <div class="free-limit-indicator" id="createFreeLimitTag">
+              <span class="tier-name">Free Plan:</span>
+              <span class="tier-count"><strong id="freeGensLeftCount">2</strong> / 2 Generations Left</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Studio Generator Interface -->
+        <div class="generator-studio-card" id="generatorStudioCard">
+          
+          <!-- Left Column: Prompt Input & Controls -->
+          <div class="generator-controls-col">
+            
+            <!-- Prompt Input Box -->
+            <div class="form-group prompt-group">
+              <div class="prompt-header-row">
+                <label for="promptInput" class="form-label">
+                  <span>SCENE PROMPT</span>
+                  <span class="char-counter" id="promptCharCounter">0/500</span>
+                </label>
+                <button type="button" class="btn-enhance-prompt" id="btnEnhancePrompt" title="AI Magic Expand">
+                  <span>✨ Enhance Prompt</span>
+                </button>
+              </div>
+
+              <div class="prompt-textarea-wrapper">
+                <textarea 
+                  id="promptInput" 
+                  class="prompt-textarea" 
+                  rows="4" 
+                  placeholder="Create a cinematic shot of a futuristic city at sunset with volumetric golden hour lighting, 4K anamorphic lens..."
+                ></textarea>
+              </div>
+
+              <!-- Quick Sample Prompt Pills -->
+              <div class="sample-prompts-tray">
+                <span class="tray-label">Quick Ideas:</span>
+                <button class="sample-pill" onclick="loadPromptToCreate('Cinematic drone flight through futuristic Neo-Tokyo at sunset, neon reflections')">🏙️ Future City</button>
+                <button class="sample-pill" onclick="loadPromptToCreate('Luxury matte-black perfume bottle splashing in turquoise ocean waves, 120fps macro')">💎 Luxury Ad</button>
+                <button class="sample-pill" onclick="loadPromptToCreate('Photorealistic AI digital avatar speaking confidently with natural facial cadence')">👤 HeyGen Avatar</button>
+                <button class="sample-pill" onclick="loadPromptToCreate('Floating solar galleon gliding over golden desert sand dunes at twilight')">✨ Fantasy Ship</button>
+              </div>
+            </div>
+
+            <!-- Model Selector (Simplified & Clean) -->
+            <div class="form-group">
+              <label class="form-label">MODEL SELECTION</label>
+              <div class="model-cards-selector" id="modelSelector">
+                
+                <!-- Standard Model -->
+                <div class="model-radio-card active" data-model="standard" data-badge="Fast">
+                  <div class="model-radio-top">
+                    <div class="radio-circle"></div>
+                    <strong class="m-title">Standard</strong>
+                    <span class="m-tag fast">Fast</span>
+                  </div>
+                  <p class="m-desc">Fast / cost-efficient model for quick previews</p>
+                </div>
+
+                <!-- Advanced Model -->
+                <div class="model-radio-card" data-model="advanced" data-badge="HD">
+                  <div class="model-radio-top">
+                    <div class="radio-circle"></div>
+                    <strong class="m-title">Advanced</strong>
+                    <span class="m-tag hd">Higher Quality</span>
+                  </div>
+                  <p class="m-desc">Enhanced camera coherence &amp; realistic lighting</p>
+                </div>
+
+                <!-- Premium Model -->
+                <div class="model-radio-card" data-model="premium" data-badge="4K">
+                  <div class="model-radio-top">
+                    <div class="radio-circle"></div>
+                    <strong class="m-title">Premium</strong>
+                    <span class="m-tag premium">Cinema 4K</span>
+                  </div>
+                  <p class="m-desc">Hollywood-grade physics &amp; photoreal detail</p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Configuration Grid (Aspect Ratio, Duration, Resolution, Style) -->
+            <div class="form-grid-controls">
+              
+              <!-- Aspect Ratio -->
+              <div class="form-group-mini">
+                <label class="form-label-mini">Aspect Ratio</label>
+                <div class="ratio-pill-group" id="ratioGroup">
+                  <button class="pill-btn active" data-ratio="16:9">16:9 Cinema</button>
+                  <button class="pill-btn" data-ratio="9:16">9:16 Reel</button>
+                  <button class="pill-btn" data-ratio="1:1">1:1 Square</button>
+                  <button class="pill-btn" data-ratio="21:9">21:9 Scope</button>
+                </div>
+              </div>
+
+              <!-- Duration -->
+              <div class="form-group-mini">
+                <label class="form-label-mini">Duration</label>
+                <div class="duration-pill-group" id="durationGroup">
+                  <button class="pill-btn active" data-sec="5">5s (Standard)</button>
+                  <button class="pill-btn" data-sec="10">10s (Extended)</button>
+                  <button class="pill-btn" data-sec="15">15s (Story)</button>
+                </div>
+              </div>
+
+              <!-- Resolution -->
+              <div class="form-group-mini">
+                <label class="form-label-mini">Resolution</label>
+                <select class="form-select" id="resolutionSelect">
+                  <option value="720p">720p HD (Quick)</option>
+                  <option value="1080p" selected>1080p Full HD</option>
+                  <option value="4k">4K Ultra HD (Pro)</option>
+                </select>
+              </div>
+
+              <!-- Style -->
+              <div class="form-group-mini">
+                <label class="form-label-mini">Cinematic Style</label>
+                <select class="form-select" id="styleSelect">
+                  <option value="Cinematic 35mm">Cinematic 35mm Film</option>
+                  <option value="Photorealistic">Photorealistic Studio</option>
+                  <option value="HeyGen Avatar">HeyGen AI Avatar Clone</option>
+                  <option value="3D Animation">3D Anime &amp; Render</option>
+                  <option value="Luxury Commercial">Luxury Product Ad</option>
+                  <option value="Cyberpunk Neon">Cyberpunk Dark Sci-Fi</option>
+                  <option value="Dark Fantasy">Dark Epic Fantasy</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Primary Generate Button -->
+            <div class="generate-action-row">
+              <button class="btn-generate-video" id="btnGenerateVideo">
+                <span class="gen-glow-effect"></span>
+                <span class="btn-text-content">
+                  <span class="icon-sparkle">✦</span>
+                  <span id="generateBtnLabel">Generate Video</span>
+                </span>
+                <span class="gen-cost-badge" id="genCostBadge">1 Generation</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Generation Experience & Output Player -->
+          <div class="generator-preview-col">
+            
+            <div class="output-stage-card" id="outputStageCard">
+              
+              <!-- Idle State Banner (Before Generation) -->
+              <div class="output-idle-box" id="outputIdleBox">
+                <div class="idle-icon-sphere">🎬</div>
+                <h3 class="idle-title">Ready for Your Generation</h3>
+                <p class="idle-text">Enter a prompt on the left and click "Generate Video" to render your cinematic scene.</p>
+                <div class="idle-watermark-note">
+                  <span class="note-icon">ℹ️</span>
+                  <span>Free plan includes watermark. Upgrade anytime to export crystal clean 4K.</span>
+                </div>
+              </div>
+
+              <!-- Live Generation Loading State -->
+              <div class="output-loading-box" id="outputLoadingBox" style="display: none;">
+                <div class="loading-aurora"></div>
+                
+                <div class="progress-meter-container">
+                  <svg viewBox="0 0 120 120" class="circular-progress-svg">
+                    <circle cx="60" cy="60" r="50" class="circle-track"></circle>
+                    <circle cx="60" cy="60" r="50" class="circle-bar" id="genProgressCircle" style="stroke-dashoffset: 314;"></circle>
+                  </svg>
+                  <span class="progress-pct-number" id="genProgressNumber">0%</span>
+                </div>
+
+                <div class="generation-status-text">
+                  <h4 class="stage-main-text" id="genStageMain">Creating your video...</h4>
+                  <p class="stage-sub-text" id="genStageSub">Initializing neural latent weights</p>
+                </div>
+
+                <!-- Sequential Step Indicator -->
+                <div class="gen-steps-row">
+                  <div class="step-pill active" id="step1">1. Scene Geometry</div>
+                  <div class="step-pill" id="step2">2. Keyframes</div>
+                  <div class="step-pill" id="step3">3. Motion Vectors</div>
+                  <div class="step-pill" id="step4">4. Finalizing 4K</div>
+                </div>
+              </div>
+
+              <!-- Finished Video Player Screen -->
+              <div class="output-player-box" id="outputPlayerBox" style="display: none;">
+                
+                <div class="video-container-relative">
+                  <video 
+                    id="generatedVideoElement" 
+                    class="generated-video-screen" 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                  >
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                  </video>
+
+                  <!-- Watermark Overlay (Only on Free Plan) -->
+                  <div class="video-watermark-overlay" id="videoWatermarkOverlay">
+                    <span class="wm-logo">SIVACINE AI</span>
+                    <span class="wm-sub">FREE PREVIEW</span>
+                  </div>
+
+                  <!-- Player Top Badges -->
+                  <div class="player-top-chips">
+                    <span class="p-chip" id="outModelChip">Standard</span>
+                    <span class="p-chip" id="outRatioChip">16:9</span>
+                    <span class="p-chip" id="outResChip">1080p</span>
+                  </div>
+                </div>
+
+                <!-- Generation Actions Toolbar -->
+                <div class="output-actions-toolbar">
+                  <div class="primary-download-row">
+                    <button class="btn-out-action btn-download" id="btnDownloadGenVideo" onclick="handleDownloadAttempt()">
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" width="14" height="14"><path d="M8 2v9M4 7l4 4 4-4M2 13h12" stroke-width="1.8" stroke-linecap="round"/></svg>
+                      <span>Download Video</span>
+                    </button>
+                    <button class="btn-out-action secondary" id="btnRegenerateVideo" onclick="regenerateVideo()">
+                      <span>🔄 Regenerate</span>
+                    </button>
+                  </div>
+
+                  <div class="secondary-actions-row">
+                    <button class="btn-out-pill" onclick="createSimilarFromCurrent()">✨ Create Similar</button>
+                    <button class="btn-out-pill" onclick="extendCurrentVideo()">⏩ Extend Video (+5s)</button>
+                    <button class="btn-out-pill" onclick="editCurrentVideoPrompt()">✂️ Edit Video</button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. TEMPLATES SECTION
+         ============================================================ -->
+    <section class="templates-section" id="templates">
+      <div class="section-container">
+        
+        <div class="section-header-compact">
+          <div class="header-left">
+            <span class="section-badge">PRODUCTION PRESETS</span>
+            <h2 class="section-title">Video Templates</h2>
+            <p class="section-subtitle">Click "Use Template" to instantly direct pre-configured cinematic sequences.</p>
+          </div>
+        </div>
+
+        <!-- Template Categories Filter -->
+        <div class="template-categories-row" id="templateCatBar">
+          <button class="t-pill active" data-tcat="all">All Templates</button>
+          <button class="t-pill" data-tcat="Cinematic">Cinematic</button>
+          <button class="t-pill" data-tcat="Story">Story</button>
+          <button class="t-pill" data-tcat="Animation">Animation</button>
+          <button class="t-pill" data-tcat="Product Ads">Product Ads</button>
+          <button class="t-pill" data-tcat="Social Media">Social Media</button>
+          <button class="t-pill" data-tcat="Avatar">Avatar</button>
+          <button class="t-pill" data-tcat="YouTube">YouTube</button>
+          <button class="t-pill" data-tcat="Marketing">Marketing</button>
+        </div>
+
+        <!-- Templates Grid with Real Video Previews -->
+        <div class="templates-cards-grid" id="templatesCardsGrid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. EARLY ACCESS / LAUNCH OFFER (Compact Premium Banner)
+         ============================================================ -->
+    <section class="early-access-section" id="early-access">
+      <div class="early-access-card">
+        <div class="ea-glow-bg"></div>
+        <div class="ea-grid">
+          
+          <div class="ea-content-col">
+            <div class="ea-badge-row">
+              <span class="ea-pill">EARLY ACCESS</span>
+              <span class="ea-slots-counter">
+                <span class="fire-icon">🔥</span>
+                <span><strong>164 / 200</strong> claimed &bull; Only 36 slots left</span>
+              </span>
+            </div>
+            
+            <h2 class="ea-headline">Join the first 200 creators</h2>
+            <p class="ea-desc">
+              Get access to our premium creator package with full studio privileges, lifetime templates, and priority GPU clusters.
+            </p>
+
+            <div class="ea-perks-row">
+              <div class="ea-perk-item">
+                <span class="perk-icon">⚡</span>
+                <span>Up to 200 video generations (5s max)</span>
+              </div>
+              <div class="ea-perk-item">
+                <span class="perk-icon">🎬</span>
+                <span>Full access to all templates</span>
+              </div>
+              <div class="ea-perk-item">
+                <span class="perk-icon">👤</span>
+                <span>HeyGen-style avatar cloning engine</span>
+              </div>
+              <div class="ea-perk-item">
+                <span class="perk-icon">💎</span>
+                <span>Watermark-free 4K downloads</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ea-price-col">
+            <div class="ea-price-box">
+              <span class="ea-price-label">LIFETIME ACCESS</span>
+              <div class="ea-price-number">
+                <span class="currency">$</span>
+                <span class="amount">200</span>
+                <span class="term">one-time</span>
+              </div>
+              <p class="ea-guarantee">Limited to first 200 creators only</p>
+              
+              <button class="btn-ea-cta" id="btnEarlyAccessCta" onclick="openPaymentModal('Early Access Package', 200, '200 Video Generations &bull; Lifetime Template Access')">
+                <span>Get Early Access</span>
+                <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10. PRICING SECTION
+         ============================================================ -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-container">
+        
+        <div class="pricing-header-center">
+          <span class="section-badge">SIMPLE PRICING</span>
+          <h2 class="section-title">Choose Your Creative Plan</h2>
+          <p class="section-subtitle">Start for free with 2 video generations, or upgrade for unlimited high-definition renders.</p>
+        </div>
+
+        <!-- 4 Pricing Cards Grid -->
+        <div class="pricing-cards-grid">
+          
+          <!-- Plan 1: FREE -->
+          <div class="pricing-card" id="planCardFree">
+            <div class="card-plan-header">
+              <span class="plan-type-label">STARTER</span>
+              <h3 class="plan-name">Free</h3>
+              <div class="plan-price">
+                <span class="price-curr">$</span>
+                <span class="price-val">0</span>
+                <span class="price-cycle">/forever</span>
+              </div>
+              <p class="plan-tagline">Test the waters with AI video creation.</p>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><span class="f-check">✓</span> <strong>2 free video generations</strong></li>
+              <li><span class="f-check">✓</span> <strong>Access to 4 models</strong></li>
+              <li><span class="f-check">✓</span> 720p HD exports</li>
+              <li><span class="f-check watermark-note">⚠️</span> Watermarked downloads</li>
+            </ul>
+
+            <button class="btn-plan-action current" id="btnCurrentFreePlan">
+              <span>Current Plan (Free)</span>
+            </button>
+          </div>
+
+          <!-- Plan 2: CREATOR / STANDARD -->
+          <div class="pricing-card" id="planCardStandard">
+            <div class="card-plan-header">
+              <span class="plan-type-label">POPULAR</span>
+              <h3 class="plan-name">Creator / Standard</h3>
+              <div class="plan-price">
+                <span class="price-curr">$</span>
+                <span class="price-val">29</span>
+                <span class="price-cycle">/month</span>
+              </div>
+              <p class="plan-tagline">For active content creators and social brands.</p>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><span class="f-check">✓</span> <strong>60 high-speed generations</strong> / mo</li>
+              <li><span class="f-check">✓</span> <strong>Higher quality 1080p Ultra</strong></li>
+              <li><span class="f-check">✓</span> <strong>No watermark on downloads</strong></li>
+              <li><span class="f-check">✓</span> Full access to all templates</li>
+              <li><span class="f-check">✓</span> Fast GPU queue priority</li>
+            </ul>
+
+            <button class="btn-plan-action" onclick="openPaymentModal('Creator / Standard Plan', 29, 'Monthly Subscription &bull; 60 Generations / Mo &bull; No Watermark')">
+              <span>Upgrade to Standard</span>
+            </button>
+          </div>
+
+          <!-- Plan 3: PREMIUM -->
+          <div class="pricing-card highlight-card" id="planCardPremium">
+            <div class="best-value-badge">MOST POWERFUL</div>
+            <div class="card-plan-header">
+              <span class="plan-type-label">STUDIO GRADE</span>
+              <h3 class="plan-name">Premium</h3>
+              <div class="plan-price">
+                <span class="price-curr">$</span>
+                <span class="price-val">59</span>
+                <span class="price-cycle">/month</span>
+              </div>
+              <p class="plan-tagline">For cinema directors and commercial studios.</p>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><span class="f-check">✓</span> <strong>Unlimited generations</strong> (Fair use)</li>
+              <li><span class="f-check">✓</span> <strong>Premium model &amp; 4K master</strong> access</li>
+              <li><span class="f-check">✓</span> <strong>Priority neural GPU cluster</strong></li>
+              <li><span class="f-check">✓</span> <strong>HeyGen Avatar voice &amp; face lock</strong></li>
+              <li><span class="f-check">✓</span> Commercial usage rights included</li>
+            </ul>
+
+            <button class="btn-plan-action primary" onclick="openPaymentModal('Premium Studio Plan', 59, 'Monthly Subscription &bull; Unlimited 4K &bull; Priority GPU &bull; HeyGen Avatar')">
+              <span>Upgrade to Premium</span>
+            </button>
+          </div>
+
+          <!-- Plan 4: EARLY ACCESS -->
+          <div class="pricing-card ea-pricing-card" id="planCardEarlyAccess">
+            <div class="ea-badge-ribbon">FIRST 200 CREATORS</div>
+            <div class="card-plan-header">
+              <span class="plan-type-label">LIMITED OFFER</span>
+              <h3 class="plan-name">Early Access</h3>
+              <div class="plan-price">
+                <span class="price-curr">$</span>
+                <span class="price-val">200</span>
+                <span class="price-cycle">/one-time</span>
+              </div>
+              <p class="plan-tagline">One payment, permanent founder benefits.</p>
+            </div>
+
+            <ul class="plan-features-list">
+              <li><span class="f-check">✓</span> <strong>Up to 200 video generations</strong></li>
+              <li><span class="f-check">✓</span> <strong>First 200 users only</strong> (Limited)</li>
+              <li><span class="f-check">✓</span> <strong>Template access unlocked</strong></li>
+              <li><span class="f-check">✓</span> <strong>No watermark + 4K Export</strong></li>
+              <li><span class="f-check">✓</span> VIP Founder badge &amp; early features</li>
+            </ul>
+
+            <button class="btn-plan-action ea-btn" onclick="openPaymentModal('Early Access Package', 200, 'One-time Founder Deal &bull; 200 Generations &bull; Lifetime Templates')">
+              <span>Claim Early Access ($200)</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================================
+       FOOTER & BOTTOM-LEFT CREATOR SIGNATURE
+       ============================================================== -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      
+      <!-- Left Bottom Corner: sivakrishna s Profile Signature -->
+      <div class="footer-left-signature" id="creatorSignature">
+        <div class="director-avatar-box">
+          <div class="director-avatar-inner">S</div>
+          <span class="director-online-dot"></span>
+        </div>
+        <div class="director-info-col">
+          <strong class="director-name">sivakrishna s</strong>
+          <span class="director-role">Cinema Director &bull; AI Creator</span>
+        </div>
+      </div>
+
+      <!-- Center Brand & Copyright -->
+      <div class="footer-center-copy">
+        <p>&copy; 2026 SIVACINE AI Platform. Turn ideas into cinema.</p>
+      </div>
+
+      <!-- Right Quick Links -->
+      <div class="footer-right-links">
+        <button class="spark-toggle-btn" id="sparkThemeToggleBtn" title="Toggle Spark Cursor Effect">
+          <span>✨ Cursor Spark: <strong id="sparkStatusLabel">ON</strong></span>
+        </button>
+        <a href="#hero">Back to top ↑</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==============================================================
+       MODALS
+       ============================================================== -->
+
+  <!-- 1. VIDEO VIEWER / LIGHTBOX MODAL -->
+  <div class="modal-backdrop" id="videoViewerModal" style="display: none;">
+    <div class="modal-card video-lightbox-card">
+      <button class="modal-close-btn" id="btnCloseViewerModal" onclick="closeViewerModal()">&times;</button>
+      
+      <div class="modal-lightbox-layout">
+        <!-- Video Screen Column -->
+        <div class="lightbox-video-col">
+          <video id="viewerModalVideo" class="lightbox-video" controls autoplay loop playsinline>
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Details Column -->
+        <div class="lightbox-info-col">
+          <div class="modal-model-badge" id="viewerModelBadge">Premium Cinema &bull; 4K</div>
+          <h3 class="viewer-scene-title" id="viewerSceneTitle">Scene Title</h3>
+
+          <div class="viewer-prompt-box">
+            <span class="box-label">PROMPT USED</span>
+            <p class="prompt-text" id="viewerPromptText"></p>
+          </div>
+
+          <div class="viewer-tags-row">
+            <span class="v-tag" id="viewerCategoryTag">Cinematic</span>
+            <span class="v-tag" id="viewerRatioTag">16:9</span>
+            <span class="v-tag">24fps Cadence</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="viewer-actions-row">
+            <button class="btn-lightbox-primary" id="btnViewerCreateSimilar">
+              <span>✨ Create Similar</span>
+            </button>
+            <button class="btn-lightbox-secondary" onclick="openPaymentModal('Single Video License', 9, 'Commercial 4K Clean License &bull; Full Rights')">
+              <span>💳 Buy License ($9)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. LOGIN MODAL -->
+  <div class="modal-backdrop" id="loginModal" style="display: none;">
+    <div class="modal-card login-modal-card">
+      <button class="modal-close-btn" onclick="closeLoginModal()">&times;</button>
+      
+      <div class="login-modal-header">
+        <div class="login-logo-icon">✨</div>
+        <h3>Welcome to SIVACINE AI</h3>
+        <p>Sign in to save your generations and manage high-speed renders.</p>
+      </div>
+
+      <div class="login-options-col">
+        <button class="btn-social-auth google" onclick="handleSocialLogin('Google')">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path fill="#EA4335" d="M12 5c1.7 0 3 .6 4 1.5l3-3C17.2 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/>
+            <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/>
+            <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12 0 12s.7 2.3 1.9 4.7l3.7-1.9z"/>
+            <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16c1.8 3.7 5.6 7 10.1 7z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <button class="btn-social-auth github" onclick="handleSocialLogin('GitHub')">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Continue with GitHub</span>
+        </button>
+
+        <div class="auth-divider">
+          <span id="authDividerLabel">or sign in with email & password</span>
+        </div>
+
+        <div class="email-input-group" style="display: flex; flex-direction: column; gap: 8px;">
+          <input type="text" id="loginNameInput" class="auth-input" placeholder="Your full name" style="display: none;">
+          <input type="email" id="loginEmailInput" class="auth-input" placeholder="name@domain.com">
+          <input type="password" id="loginPasswordInput" class="auth-input" placeholder="Password (min 8 characters)">
+          <div style="display: flex; gap: 8px; margin-top: 4px;">
+            <button class="btn-email-continue" id="btnLoginSubmit" style="flex: 1;" onclick="handleEmailLogin()">Sign In &rarr;</button>
+            <button class="btn-email-continue" id="btnToggleAuthMode" style="flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);" onclick="toggleAuthMode()">Create Account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. PAYMENT & CHECKOUT MODAL -->
+  <div class="modal-backdrop" id="paymentModal" style="display: none;">
+    <div class="modal-card payment-modal-card">
+      <button class="modal-close-btn" onclick="closePaymentModal()">&times;</button>
+      
+      <div class="payment-modal-layout">
+        <!-- Order Summary Column -->
+        <div class="pay-summary-col">
+          <div class="pay-brand-header">
+            <span class="pay-pill">SECURE 256-BIT SSL CHECKOUT</span>
+            <h3 id="payItemName">Early Access Package</h3>
+            <p id="payItemDesc">200 Video Generations &bull; Lifetime Template Access</p>
+          </div>
+
+          <div class="pay-amount-box">
+            <span class="amount-label">Total Due Today</span>
+            <div class="amount-val-row">
+              <span class="currency">$</span>
+              <span class="amount-number" id="payAmountNumber">200</span>
+              <span class="amount-cur-tag">USD</span>
+            </div>
+          </div>
+
+          <div class="pay-perks-list">
+            <div class="p-item"><span>⚡</span> Instant activation in your account</div>
+            <div class="p-item"><span>💎</span> Permanent watermark removal</div>
+            <div class="p-item"><span>🛡️</span> 14-day money back satisfaction guarantee</div>
+          </div>
+        </div>
+
+        <!-- Payment Form Column -->
+        <div class="pay-form-col">
+          <div class="pay-method-tabs">
+            <button class="pay-tab active" data-tab="card" onclick="selectPayTab('card')">💳 Card</button>
+            <button class="pay-tab" data-tab="upi" onclick="selectPayTab('upi')">📱 UPI / GPay</button>
+            <button class="pay-tab" data-tab="apple" onclick="selectPayTab('apple')"> Apple Pay</button>
+            <button class="pay-tab" data-tab="crypto" onclick="selectPayTab('crypto')">🪙 Crypto</button>
+          </div>
+
+          <!-- Card Tab Content -->
+          <div class="pay-tab-content active" id="tabContentCard">
+            <div class="pay-input-row">
+              <label>Card Number</label>
+              <input type="text" class="pay-input" placeholder="4242 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242" value="4242 •••• •••• 4242">
+            </div>
+            <div class="pay-inputs-two-col">
+              <div>
+                <label>Expires</label>
+                <input type="text" class="pay-input" placeholder="MM/YY" value="12/28">
+              </div>
+              <div>
+                <label>CVC</label>
+                <input type="text" class="pay-input" placeholder="CVC" value="888">
+              </div>
+            </div>
+            <div class="pay-input-row">
+              <label>Name on Card</label>
+              <input type="text" class="pay-input" placeholder="Sivakrishna S" value="Sivakrishna S">
+            </div>
+          </div>
+
+          <!-- UPI Tab Content -->
+          <div class="pay-tab-content" id="tabContentUpi" style="display: none;">
+            <div class="pay-input-row">
+              <label>UPI ID (Google Pay, PhonePe, Paytm)</label>
+              <input type="text" class="pay-input" placeholder="username@oksbi" value="sivakrishna@okhdfcbank">
+            </div>
+            <p class="upi-help">A payment collect request will be sent to your UPI application.</p>
+          </div>
+
+          <!-- Apple Pay Tab Content -->
+          <div class="pay-tab-content" id="tabContentApple" style="display: none;">
+            <div class="apple-pay-box">
+              <button class="btn-apple-pay" onclick="simulatePaymentSuccess()">
+                <span> Pay with Apple Pay</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Crypto Tab Content -->
+          <div class="pay-tab-content" id="tabContentCrypto" style="display: none;">
+            <div class="pay-input-row">
+              <label>Select Cryptocurrency</label>
+              <select class="pay-input">
+                <option>USDT (TRC20 / ERC20)</option>
+                <option>Solana (SOL)</option>
+                <option>Bitcoin (BTC)</option>
+              </select>
+            </div>
+            <div class="crypto-addr-box">
+              <code>0x71C...SivaCinePay...8B5C</code>
+            </div>
+          </div>
+
+          <!-- Complete Payment Action -->
+          <div class="pay-submit-row">
+            <button class="btn-submit-payment" id="btnSubmitPayment" onclick="simulatePaymentSuccess()">
+              <span class="pay-lock-icon">🔒</span>
+              <span>Complete Payment &bull; $<span id="btnPayAmountText">200</span></span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. WATERMARK REMOVAL / UPGRADE MODAL -->
+  <div class="modal-backdrop" id="watermarkModal" style="display: none;">
+    <div class="modal-card watermark-modal-card">
+      <button class="modal-close-btn" onclick="closeWatermarkModal()">&times;</button>
+      
+      <div class="wm-modal-content">
+        <div class="wm-icon-badge">💎</div>
+        <h3>Download in Crystal 4K (No Watermark)</h3>
+        <p>Free plan downloads contain a watermark overlay. Upgrade to remove watermark and unlock 4K native rendering.</p>
+
+        <div class="wm-comparison-row">
+          <div class="wm-side free">
+            <span class="wm-side-tag">Free Download</span>
+            <strong>Includes Watermark</strong>
+            <span>720p HD Standard</span>
+          </div>
+          <div class="wm-side pro">
+            <span class="wm-side-tag gold">Creator / Early Access</span>
+            <strong>100% Watermark-Free</strong>
+            <span>4K Cinema Master</span>
+          </div>
+        </div>
+
+        <div class="wm-actions-row">
+          <button class="btn-wm-upgrade" onclick="closeWatermarkModal(); openPaymentModal('Creator Plan (No Watermark)', 29, 'Instant Watermark Removal &bull; 60 HD Generations')">
+            <span>Upgrade to Remove Watermark &bull; $29</span>
+          </button>
+          <button class="btn-wm-continue-free" onclick="proceedFreeWatermarkedDownload()">
+            <span>Download with Watermark</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. FREE GENERATIONS COMPLETE MODAL -->
+  <div class="modal-backdrop" id="freeLimitModal" style="display: none;">
+    <div class="modal-card limit-modal-card">
+      <button class="modal-close-btn" onclick="closeFreeLimitModal()">&times;</button>
+      
+      <div class="limit-modal-content">
+        <div class="limit-icon-badge">⚡</div>
+        <h3>Your free generations are complete.</h3>
+        <p>You have used your 2 free generations. Upgrade to continue creating cinematic videos with zero interruptions.</p>
+
+        <div class="limit-cta-box">
+          <div class="limit-offer-row">
+            <div>
+              <strong>Early Access Package</strong>
+              <span>200 Generations &bull; Lifetime Templates</span>
+            </div>
+            <strong class="limit-offer-price">$200</strong>
+          </div>
+          <button class="btn-limit-upgrade" onclick="closeFreeLimitModal(); openPaymentModal('Early Access Package', 200, '200 Generations &bull; Lifetime Templates')">
+            <span>Upgrade to Continue &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Scaffold -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

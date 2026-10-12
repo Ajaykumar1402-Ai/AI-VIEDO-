@@ -1,0 +1,29 @@
+# Dependencies & Environment
+node_modules/
+.venv/
+env/
+venv/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.db
+*.sqlite3
+
+# Audio / Video Outputs & Artifacts
+outputs/
+*.log
+*.wav
+*.mp3
+*.mp4
+
+# OS / System
+.DS_Store
+Thumbs.db
+__MACOSX/
