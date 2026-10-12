@@ -45,8 +45,22 @@ class Settings(BaseSettings):
         description="Google Gemini API Key"
     )
     GEMINI_MODEL: str = Field(
-        default="gemini-2.5-flash",
+        default="gemini-3.5-flash",
         description="Gemini model identifier"
+    )
+
+    # Supabase Storage Configuration
+    SUPABASE_URL: str = Field(
+        default="",
+        description="Supabase Project URL (e.g. https://your-project.supabase.co)"
+    )
+    SUPABASE_KEY: str = Field(
+        default="",
+        description="Supabase API key (service_role or anon)"
+    )
+    SUPABASE_SCRIPTS_BUCKET: str = Field(
+        default="scripts",
+        description="Supabase Storage bucket name for JSON scripts"
     )
 
     # Output & Artifacts Storage

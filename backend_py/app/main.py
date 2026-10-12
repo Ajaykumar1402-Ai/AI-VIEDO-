@@ -7,6 +7,7 @@ from .routes.auth import router as auth_router
 from .routes.health import router as health_router
 from .routes.projects import router as projects_router
 from .routes.jobs import router as jobs_router
+from .routes.script_generator import router as script_generator_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -43,6 +44,7 @@ app.include_router(health_router)
 app.include_router(auth_router)
 app.include_router(projects_router)
 app.include_router(jobs_router)
+app.include_router(script_generator_router)
 
 @app.get("/")
 def root():

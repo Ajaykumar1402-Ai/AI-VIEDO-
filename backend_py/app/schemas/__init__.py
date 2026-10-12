@@ -10,6 +10,10 @@ from .story import (
     JobResponse,
     LTXExportSchema
 )
+from .script_generator import (
+    ScriptGenerateRequest,
+    ScriptGenerateResponse,
+)
 
 __all__ = [
     "UserCreate",
@@ -25,5 +29,7 @@ __all__ = [
     "ProjectResponse",
     "TTSGenerateRequest",
     "JobResponse",
-    "LTXExportSchema"
+    "LTXExportSchema",
+    "ScriptGenerateRequest",
+    "ScriptGenerateResponse",
 ]
